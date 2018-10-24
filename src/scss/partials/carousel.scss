@@ -1,12 +1,55 @@
 
 .js-carousel {
 	.carousel-wrapper {
+		position:relative;
 		width:100%;
+		overflow:hidden;
 		height:auto;
+
+		.control {
+			position:absolute;
+			z-index:1;
+			top:calc(50% - 20px);
+			background: rgba(255, 255, 255, 0.6);
+			border-radius:50px;
+			width:40px;
+			height:40px;
+
+			button {
+				position: absolute;
+				border: solid $gray;
+			    border-width: 0 3px 3px 0;
+			    display: inline-block;
+			    text-indent: -9999px;
+			    width:20px;
+			    height:20px;
+			    cursor:pointer;
+			    background:none;
+			    left: 7px;
+    			top: 6px;
+			}
+
+			&:first-of-type {
+				left:20px;
+				transform: rotate(135deg);
+				-webkit-transform: rotate(135deg);
+			}
+
+			&:last-of-type {
+				right:20px;
+				transform: rotate(-45deg);
+				-webkit-transform: rotate(-45deg);
+			}
+		}
+	}
+
+	.carousel-counter {
+		text-align:right;
 	}
 
 	.carousel-view {
 		overflow:hidden;
+		width: auto;
 		display: flex;
 	}
 
