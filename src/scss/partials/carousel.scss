@@ -1,0 +1,21 @@
+
+.js-carousel {
+	.carousel-wrapper {
+		width:100%;
+		height:auto;
+	}
+
+	.carousel-view {
+		overflow:hidden;
+		display: flex;
+	}
+
+	.carousel-element {
+		position:relative;
+		flex: 1 0 100%;
+
+		img {
+			width:100%;
+		}
+	}
+}
