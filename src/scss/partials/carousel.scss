@@ -56,9 +56,33 @@
 	.carousel-element {
 		position:relative;
 		flex: 1 0 100%;
+		transition-property: all;
+		transition-duration: .5s;
+		transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 
 		img {
 			width:100%;
 		}
 	}
+
+	&.col-6 .carousel-element {
+		flex: 1 0 calc(50% - 10px);
+		padding: 0 10px;
+
+		&.active {
+			padding-left:0;
+		}
+
+		&:nth-child(2n) {
+			padding-right:0;
+		}
+	}
+}
+
+@-webkit-keyframes carousel-view {
+    100% { left: 0; }
+}
+
+@keyframes carousel-view {
+    100% { left: 0; }
 }
