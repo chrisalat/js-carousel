@@ -1,6 +1,6 @@
-# CS-Carousel
+# CS-Responsive-Carousel
 
-A normal carousel wrote in plain javascript.
+A responsive carousel wrote in plain javascript.
 
 Current features:
 

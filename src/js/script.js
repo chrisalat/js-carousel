@@ -29,12 +29,14 @@ function getIndexElement() {
 // Set sum of slides and active counted element
 function setCounter(elements, index) {
 	var counter = elements[0].parentElement.parentElement.parentElement.querySelector('.carousel-counter');
-	if (elements[0].parentElement.parentElement.parentElement.classList.contains('col-6')) {
-		counter.querySelector('.active-element').innerHTML = index + 1;
-		counter.querySelector('.sum-elements').innerHTML = elements.length / 2;
-	} else {
-		counter.querySelector('.active-element').innerHTML = index + 1;
-		counter.querySelector('.sum-elements').innerHTML = elements.length;
+	if (counter) {
+		if (elements[0].parentElement.parentElement.parentElement.classList.contains('col-6')) {
+			counter.querySelector('.active-element').innerHTML = index + 1;
+			counter.querySelector('.sum-elements').innerHTML = elements.length / 2;
+		} else {
+			counter.querySelector('.active-element').innerHTML = index + 1;
+			counter.querySelector('.sum-elements').innerHTML = elements.length;
+		}
 	}
 }
 
@@ -46,24 +48,33 @@ function nextSlide(event) {
 	var elements = this.parentNode.parentNode.querySelector('.carousel-view').getElementsByTagName("div");
 	for (var i = 0; i < elements.length; i++){
 		if (elements[i].classList.contains('active')){
-			if (i + 2 !== elements.length) {
-				if (this.parentElement.parentElement.parentElement.classList.contains('col-6')) {
+			if (this.parentElement.parentElement.parentElement.classList.contains('col-6')) {
+				if (i + 2 !== elements.length) {
 					elements[i].className = "carousel-element";
 					elements[i + 2].className = "carousel-element active";
 				} else {
-					elements[i].className = "carousel-element";
-					elements[i + 1].style.marginLeft = '0';
-					elements[i + 1].className = "carousel-element active";
+					for (var e = 0; e < elements.length; e++){
+						elements[0].className = "carousel-element active";
+						elements[e].className = "carousel-element";
+						elements[e].style.marginLeft = '0';
+					}
 				}
 				getIndexElement();
 				break;
 			} else {
-				for (var e = 0; e < elements.length; e++){
-					elements[0].className = "carousel-element active";
-					elements[e].className = "carousel-element";
-					elements[e].style.marginLeft = '0';
+				if (i + 1 !== elements.length) {
+					elements[i].className = "carousel-element";
+					elements[i + 1].style.marginLeft = '0';
+					elements[i + 1].className = "carousel-element active";
+				} else {
+					for (var e = 0; e < elements.length; e++){
+						elements[0].className = "carousel-element active";
+						elements[e].className = "carousel-element";
+						elements[e].style.marginLeft = '0';
+					}
 				}
 				getIndexElement();
+				break;
 			}
 		}
 	}
